@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tekno1n.id | Premium Digital Store</title>
+<meta name="description" content="Tekno1n.id - Premium Digital Store: CapCut Pro, Canva Pro, YouTube Premium dan layanan digital lainnya. Cepat, murah, aman.">
+<style>
+:root{
+  --bg:#0b1220;--card:#12192a;--txt:#e7eefc;--muted:#93a0b6;--line:#24314b;
+  --acc:#22c55e;--acc2:#60a5fa;--warn:#f59e0b;--danger:#ef4444
+}
+*{box-sizing:border-box} html,body{margin:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;color:var(--txt);background:var(--bg)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:auto;padding:16px}
+header{position:sticky;top:0;background:rgba(11,18,32,.8);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:20}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900}
+.brand span{color:var(--acc2)}
+.hero{padding:34px 16px 16px;text-align:center}
+.hero h1{margin:0 0 8px;font-size:clamp(1.6rem,3.6vw,2.4rem)}
+.hero p{margin:0;color:var(--muted)}
+.tools{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.input,select,textarea{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:12px;padding:10px 12px;outline:none}
+.btn{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--acc);color:#04110a;font-weight:800;border:1px solid #1a6f3b}
+.btn.secondary{background:#1f2a44;color:#c8d6ff;border-color:var(--line)}
+.btn.danger{background:var(--danger);color:#fff;border-color:#b91c1c}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column}
+.card img{width:100%;height:150px;object-fit:cover;border-radius:12px;border:1px solid var(--line);background:#0d1524}
+.card h3{margin:10px 0 6px}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:#1b2440;color:#cfe0ff;font-size:.75rem}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.price{color:var(--acc2);font-weight:800}
+.muted{color:var(--muted);font-size:.9rem}
+.section{padding:10px 16px 24px}
+.section h2{margin:8px 0 8px;font-size:1.2rem}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0}
+.faq summary{cursor:pointer;font-weight:700}
+.testi{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.tname{font-weight:700}
+.tstars{color:#ffd166}
+footer{border-top:1px solid var(--line);color:var(--muted);text-align:center;padding:18px}
+.wa-float{position:fixed;right:16px;bottom:16px;background:#25D366;color:#04250f;border-radius:999px;
+  padding:12px 16px;font-weight:800;border:2px solid #158b46;box-shadow:0 8px 30px #0007;z-index:50}
+.pill{padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#152038}
+.flex{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center}
+.hidden{display:none}
+.adminbar{position:sticky;top:56px;background:#0f1830cc;border-bottom:1px dashed var(--line);backdrop-filter:blur(6px);z-index:19}
+.table{width:100%;border-collapse:collapse;margin-top:10px}
+.table th,.table td{border:1px solid var(--line);padding:8px;font-size:.95rem}
+.table th{background:#162245}
+small.code{font-family:ui-monospace,Consolas,monospace;color:#9dd2ff}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap brand">🛒 <span>Tekno1n.id</span> — Premium Digital Store <span id="adminBadge" class="pill hidden">ADMIN</span></div>
+</header>
+
+<section class="hero">
+  <h1>Premium Digital • Cepat • Aman</h1>
+  <p>CapCut Pro, Canva Pro, YouTube Premium, dll. Harga terjangkau, garansi aktif.</p>
+
+  <div class="tools">
+    <input id="q" class="input" placeholder="Cari produk...">
+    <select id="sort" class="input">
+      <option value="popular">Terpopuler</option>
+      <option value="price-asc">Termurah → Termahal</option>
+      <option value="price-desc">Termahal → Termurah</option>
+      <option value="name">A-Z</option>
+    </select>
+    <button id="resetBtn" class="btn secondary">Reset</button>
+    <button id="loginBtn" class="btn">Login Admin</button>
+    <button id="logoutBtn" class="btn secondary hidden">Logout Admin</button>
+  </div>
+</section>
+
+<!-- ADMIN BAR -->
+<div id="adminBar" class="adminbar hidden">
+  <div class="wrap">
+    <div class="flex" style="justify-content:space-between">
+      <div class="flex">
+        <span class="pill">Mode Admin Aktif</span>
+        <button id="exportBtn" class="btn secondary">Export JSON</button>
+        <label class="btn secondary" for="importFile">Import JSON</label>
+        <input id="importFile" type="file" accept="application/json" class="hidden">
+      </div>
+      <small class="code">Tip: gambar pakai URL (contoh: https://i.imgur.com/....jpg)</small>
+    </div>
+
+    <h2>Kelola Produk</h2>
+    <form id="prodForm" class="flex" style="justify-content:flex-start">
+      <input class="input" id="pName" placeholder="Nama produk" required>
+      <input class="input" id="pPrice" placeholder="Harga (angka)" type="number" min="0" required>
+      <input class="input" id="pUnit" placeholder="Satuan (cth: /bulan)">
+      <input class="input" id="pCat" placeholder="Kategori (cth: Editor, Musik)" required>
+      <input class="input" id="pImg" placeholder="URL Gambar (https://...)">
+      <input class="input" id="pPopular" placeholder="Popularitas (0-100)" type="number" min="0" max="100" value="80">
+      <input class="input" id="pDesc" placeholder="Deskripsi singkat">
+      <button class="btn" type="submit">Simpan / Tambah</button>
+      <button class="btn danger" id="clearForm" type="button">Bersih</button>
+    </form>
+
+    <table class="table" id="prodTable">
+      <thead><tr><th>Nama</th><th>Harga</th><th>Unit</th><th>Kat.</th><th>Gambar</th><th>Pop.</th><th>Aksi</th></tr></thead>
+      <tbody></tbody>
+    </table>
+
+    <h2>Kelola Testimoni</h2>
+    <form id="testiForm" class="flex" style="justify-content:flex-start">
+      <input class="input" id="tName" placeholder="Nama pelanggan" required>
+      <input class="input" id="tStars" placeholder="Bintang (1-5)" type="number" min="1" max="5" required>
+      <input class="input" id="tText" placeholder="Isi testimoni" required>
+      <button class="btn" type="submit">Tambah Testi</button>
+    </form>
+
+    <table class="table" id="testiTable">
+      <thead><tr><th>Nama</th><th>Bintang</th><th>Testi</th><th>Aksi</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="wrap section">
+  <div id="grid" class="grid"></div>
+</div>
+
+<div class="wrap section">
+  <h2>Testimoni Pelanggan</h2>
+  <div id="testi" class="testi"></div>
+</div>
+
+<div class="wrap section faq" id="faq">
+  <h2>FAQ</h2>
+  <details><summary>Gimana cara order?</summary>
+    <div class="muted">Klik tombol <b>Order via WhatsApp</b> pada produk. Format pesan otomatis terisi. Tinggal kirim.</div>
+  </details>
+  <details><summary>Pengiriman berapa lama?</summary>
+    <div class="muted">Rata-rata <b>&lt; 5 menit</b>. Bisa lebih cepat/lamat tergantung antrian & jam operasional.</div>
+  </details>
+  <details><summary>Ada garansi?</summary>
+    <div class="muted">Yes, <b>garansi aktif</b> sesuai deskripsi produk. Jika ada kendala, kami bantu sampai beres.</div>
+  </details>
+</div>
+
+<footer>© <span id="year"></span> tekno1n — Made with ❤️ on Termux</footer>
+<a id="waFloat" class="wa-float" href="#" target="_blank">Chat Admin</a>
+
+<script>
+/* =======================
+   KONFIG TOKO
+   ======================= */
+const WA_NUMBER = "62895428270020"; // ← nomor WA admin (format internasional TANPA +)
+const ADMIN_PASS = "tekno1n-admin"; // ← ganti passcode admin di sini
+const ALLOWED_ADMIN_EMAIL = "csmgru05@gmail.com"; // ← kalau nanti pakai Google Sign-In
+document.title = "Tekno1n.id | Premium Digital Store";
+
+/* =======================
+   STORAGE & DATA AWAL
+   ======================= */
+const LS_KEY = "tekno1n_store_v1";
+const defaultData = {
+  products: [
+    { id: id(), name:"CapCut Pro Private", cat:"Editor", price:13500, unit:"/bulan", img:"https://picsum.photos/seed/capcut/600/300", desc:"Full Garansi - akses private", popular:95 },
+    { id: id(), name:"Canva Pro", cat:"Desain", price:2000, unit:"/bulan", img:"https://picsum.photos/seed/canva/600/300", desc:"Invite email ke tim Pro", popular:90 },
+    { id: id(), name:"YouTube Premium (Family)", cat:"Hiburan", price:3000, unit:"/bulan", img:"https://picsum.photos/seed/youtube/600/300", desc:"Join family plan, no ads", popular:85 }
+  ],
+  testi: [
+    { id:id(), name:"Rafi", stars:5, text:"Order CapCut 3 menit kelar. Mantap!" },
+    { id:id(), name:"Sinta", stars:5, text:"Canva Pro langsung masuk. Fast respon." },
+    { id:id(), name:"Dio", stars:4, text:"YouTube Premium lancar jaya." }
+  ]
+};
+function id(){ return Math.random().toString(36).slice(2,10); }
+function load(){ try{ return JSON.parse(localStorage.getItem(LS_KEY)) || defaultData }catch{ return defaultData } }
+function save(data){ localStorage.setItem(LS_KEY, JSON.stringify(data)); }
+
+let DB = load();
+let ADMIN = false;
+
+/* =======================
+   DOM
+   ======================= */
+const yearEl = document.getElementById("year"); yearEl.textContent = new Date().getFullYear();
+const qEl = document.getElementById("q");
+const sortEl = document.getElementById("sort");
+const grid = document.getElementById("grid");
+const testiWrap = document.getElementById("testi");
+const waFloat = document.getElementById("waFloat");
+const adminBar = document.getElementById("adminBar");
+const adminBadge = document.getElementById("adminBadge");
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+
+const pName = document.getElementById("pName");
+const pPrice = document.getElementById("pPrice");
+const pUnit = document.getElementById("pUnit");
+const pCat = document.getElementById("pCat");
+const pImg = document.getElementById("pImg");
+const pPopular = document.getElementById("pPopular");
+const pDesc = document.getElementById("pDesc");
+const prodForm = document.getElementById("prodForm");
+const prodTableBody = document.querySelector("#prodTable tbody");
+const clearFormBtn = document.getElementById("clearForm");
+
+const testiForm = document.getElementById("testiForm");
+const tName = document.getElementById("tName");
+const tStars = document.getElementById("tStars");
+const tText = document.getElementById("tText");
+const testiTableBody = document.querySelector("#testiTable tbody");
+
+document.getElementById('resetBtn').addEventListener('click', ()=>{ qEl.value=""; sortEl.value="popular"; renderProducts(); });
+waFloat.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Halo Tekno1n, saya mau tanya ketersediaan & price list.")}`;
+
+/* =======================
+   RENDER
+   ======================= */
+const fmtIDR = n => "Rp" + (n||0).toLocaleString("id-ID");
+function renderProducts(){
+  let list = DB.products.slice();
+  const q = (qEl.value||"").trim().toLowerCase();
+  if(q) list = list.filter(p => (p.name+p.desc+p.cat).toLowerCase().includes(q));
+  const s = sortEl.value;
+  if(s==="price-asc") list.sort((a,b)=>a.price-b.price);
+  else if(s==="price-desc") list.sort((a,b)=>b.price-a.price);
+  else if(s==="name") list.sort((a,b)=>a.name.localeCompare(b.name));
+  else list.sort((a,b)=>b.popular-a.popular);
+
+  grid.innerHTML = list.map(p=>`
+    <div class="card">
+      <img src="${p.img||'https://picsum.photos/seed/tekno1n/600/300'}" alt="${p.name}">
+      <div class="row">
+        <h3>${p.name}</h3>
+        <span class="badge">${p.cat||'-'}</span>
+      </div>
+      <div class="row">
+        <div class="price">${fmtIDR(p.price)} <span class="muted">${p.unit||""}</span></div>
+        <div class="muted">⭐ ${p.popular||0}</div>
+      </div>
+      <p class="muted">${p.desc||""}</p>
+      <div class="flex" style="justify-content:space-between;margin-top:8px">
+        <a class="btn" href="${waLink(p.name)}" target="_blank">Order via WhatsApp</a>
+        ${ADMIN? `<button class="btn secondary" onclick="editProd('${p.id}')">Edit</button>
+                  <button class="btn danger" onclick="delProd('${p.id}')">Hapus</button>`:''}
+      </div>
+    </div>
+  `).join('') || `<div class="muted">Tidak ada produk yang cocok.</div>`;
+}
+function renderTesti(){
+  testiWrap.innerHTML = DB.testi.map(t=>{
+    const stars = "★".repeat(t.stars) + "☆".repeat(5-t.stars);
+    return `<div class="tcard"><div class="row"><div class="tname">${t.name}</div><div class="tstars">${stars}</div></div><div class="muted">${t.text}</div>
+      ${ADMIN? `<div style="margin-top:8px" class="flex"><button class="btn secondary" onclick="editTesti('${t.id}')">Edit</button><button class="btn danger" onclick="delTesti('${t.id}')">Hapus</button></div>`:''}
+    </div>`;
+  }).join('');
+}
+function renderProdTable(){
+  prodTableBody.innerHTML = DB.products.map(p=>`
+    <tr>
+      <td>${p.name}</td>
+      <td>${fmtIDR(p.price)}</td>
+      <td>${p.unit||""}</td>
+      <td>${p.cat||""}</td>
+      <td><a href="${p.img}" target="_blank">Lihat</a></td>
+      <td>${p.popular||0}</td>
+      <td>
+        <button class="btn secondary" onclick="editProd('${p.id}')">Edit</button>
+        <button class="btn danger" onclick="delProd('${p.id}')">Hapus</button>
+      </td>
+    </tr>
+  `).join('') || `<tr><td colspan="7" class="muted">Belum ada produk.</td></tr>`;
+}
+function renderTestiTable(){
+  testiTableBody.innerHTML = DB.testi.map(t=>`
+    <tr>
+      <td>${t.name}</td><td>${t.stars}</td><td>${t.text}</td>
+      <td>
+        <button class="btn secondary" onclick="editTesti('${t.id}')">Edit</button>
+        <button class="btn danger" onclick="delTesti('${t.id}')">Hapus</button>
+      </td>
+    </tr>
+  `).join('') || `<tr><td colspan="4" class="muted">Belum ada testimoni.</td></tr>`;
+}
+function waLink(productName){
+  const text = encodeURIComponent(`Halo Tekno1n, saya mau order ${productName}. Mohon detail & cara pembayarannya ya.`);
+  return `https://wa.me/${WA_NUMBER}?text=${text}`;
+}
+
+/* =======================
+   ADMIN MODE
+   ======================= */
+function setAdmin(on){
+  ADMIN = !!on;
+  adminBar.classList.toggle("hidden", !ADMIN);
+  adminBadge.classList.toggle("hidden", !ADMIN);
+  loginBtn.classList.toggle("hidden", ADMIN);
+  logoutBtn.classList.toggle("hidden", !ADMIN);
+  renderProducts(); renderProdTable(); renderTesti(); renderTestiTable();
+}
+loginBtn.onclick = ()=>{
+  const pass = prompt("Masukkan passcode admin:");
+  if(pass === admin){ setAdmin(true); }
+  else alert("Passcode salah.");
+};
+logoutBtn.onclick = ()=> setAdmin(false);
+
+/* =======================
+   CRUD PRODUK
+   ======================= */
+let editingId = null;
+prodForm.addEventListener("submit", (e)=>{
+  e.preventDefault();
+  const data = {
+    name:pName.value.trim(), price: +pPrice.value, unit:pUnit.value.trim(),
+    cat:pCat.value.trim(), img:pImg.value.trim(), desc:pDesc.value.trim(),
+    popular: Math.max(0, Math.min(100, +pPopular.value||0))
+  };
+  if(!data.name || Number.isNaN(data.price)) return alert("Nama & Harga wajib diisi.");
+
+  if(editingId){
+    const idx = DB.products.findIndex(p=>p.id===editingId);
+    if(idx>-1) DB.products[idx] = {...DB.products[idx], ...data};
+  }else{
+    DB.products.push({id:id(), ...data});
+  }
+  save(DB);
+  editingId=null; prodForm.reset(); pPopular.value=80;
+  renderProducts(); renderProdTable();
+});
+document.getElementById("clearForm").onclick = ()=>{ editingId=null; prodForm.reset(); pPopular.value=80; };
+
+window.editProd = (pid)=>{
+  const p = DB.products.find(x=>x.id===pid); if(!p) return;
+  editingId = p.id;
+  pName.value=p.name; pPrice.value=p.price; pUnit.value=p.unit||""; pCat.value=p.cat||"";
+  pImg.value=p.img||""; pDesc.value=p.desc||""; pPopular.value=p.popular||0;
+  window.scrollTo({top:0,behavior:"smooth"});
+};
+window.delProd = (pid)=>{
+  if(!confirm("Hapus produk ini?")) return;
+  DB.products = DB.products.filter(x=>x.id!==pid);
+  save(DB); renderProducts(); renderProdTable();
+};
+
+/* =======================
+   CRUD TESTI
+   ======================= */
+let editingTestiId = null;
+testiForm.addEventListener("submit",(e)=>{
+  e.preventDefault();
+  const t = { name:tName.value.trim(), stars:+tStars.value, text:tText.value.trim() };
+  if(!t.name || Number.isNaN(t.stars) || !t.text) return alert("Lengkapi testimoni.");
+  if(editingTestiId){
+    const i = DB.testi.findIndex(x=>x.id===editingTestiId);
+    if(i>-1) DB.testi[i] = {...DB.testi[i], ...t};
+  }else{
+    DB.testi.push({id:id(), ...t});
+  }
+  save(DB); editingTestiId=null; testiForm.reset();
+  renderTesti(); renderTestiTable();
+});
+window.editTesti = (tid)=>{
+  const t = DB.testi.find(x=>x.id===tid); if(!t) return;
+  editingTestiId = t.id; tName.value=t.name; tStars.value=t.stars; tText.value=t.text;
+  window.scrollTo({top:document.getElementById('testi').offsetTop-80,behavior:"smooth"});
+};
+window.delTesti = (tid)=>{
+  if(!confirm("Hapus testimoni ini?")) return;
+  DB.testi = DB.testi.filter(x=>x.id!==tid);
+  save(DB); renderTesti(); renderTestiTable();
+};
+
+/* =======================
+   EXPORT / IMPORT
+   ======================= */
+document.getElementById("exportBtn").onclick = ()=>{
+  const blob = new Blob([JSON.stringify(DB,null,2)], {type:"application/json"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+  a.download = "tekno1n-store.json"; a.click();
+};
+document.getElementById("importFile").addEventListener("change", (ev)=>{
+  const f = ev.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = ()=>{ try{ DB = JSON.parse(r.result); save(DB); renderAll(); alert("Import sukses!") }catch{ alert("Import gagal: JSON tidak valid") } };
+  r.readAsText(f);
+});
+
+/* =======================
+   SEARCH + SORT
+   ======================= */
+qEl.addEventListener('input', renderProducts);
+sortEl.addEventListener('change', renderProducts);
+
+/* =======================
+   OPSIONAL: GOOGLE SIGN-IN
+   (Butuh client_id. Aktifkan jika sudah punya)
+   - Batasi admin by email: ALLOWED_ADMIN_EMAIL
+   ======================= */
+// const CLIENT_ID = "ISI_CLIENT_ID_GOOGLE_KAMU.apps.googleusercontent.com";
+// (function addGoogle(){const s=document.createElement('script');s.src="https://accounts.google.com/gsi/client";s.async=true;s.defer=true;document.head.appendChild(s);}());
+// function onGoogleCredential(resp){ try{ const payload = JSON.parse(atob(resp.credential.split('.')[1])); if(payload.email===ALLOWED_ADMIN_EMAIL){ setAdmin(true); } else alert("Email tidak diizinkan."); }catch(e){ alert("Login gagal"); } }
+// // Tambahkan tombol di UI kalau mau:
+// // <div id="g_id_onload" data-client_id="...CLIENT_ID..." data-callback="onGoogleCredential"></div>
+// // <div class="g_id_signin" data-type="standard"></div>
+
+function renderAll(){ renderProducts(); renderTesti(); renderProdTable(); renderTestiTable(); }
+renderAll();
+</script>
+</body>
+</html>

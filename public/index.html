@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tekno1n.id | Premium Digital Store</title>
+  <meta name="description" content="Tekno1n.id - Premium Digital Store: CapCut Pro, Canva Pro, Netflix, Spotify, dan layanan digital lainnya. Cepat, murah, aman.">
+  <style>
+    :root{--bg:#0d1117;--card:#161b22;--txt:#e6edf3;--muted:#8b949e;--line:#30363d;--acc:#2ea043;--acc2:#58a6ff}
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;color:var(--txt);background:var(--bg)}
+    header{position:sticky;top:0;background:rgba(13,17,23,.8);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10}
+    .wrap{max-width:1050px;margin:auto;padding:16px}
+    .brand{display:flex;gap:12px;align-items:center;font-weight:700}
+    .brand span{color:var(--acc2)}
+    .hero{padding:48px 16px;text-align:center}
+    .hero h1{margin:0 0 10px;font-size:2rem}
+    .hero p{margin:0 0 18px;color:var(--muted)}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--acc);color:#fff;text-decoration:none;font-weight:600}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+    .card img{width:100%;height:150px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+    .card h3{margin:10px 0 6px}
+    .price{color:var(--acc2);font-weight:700}
+    .muted{color:var(--muted);font-size:.9rem}
+    footer{margin-top:28px;border-top:1px solid var(--line);padding:16px;color:var(--muted);text-align:center}
+    .cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+    .cta a{background:#238636;color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
+    .cta a:nth-child(2){background:#3b82f6}
+    .badge{display:inline-block;background:#1f6feb;color:#fff;font-size:.75rem;padding:4px 8px;border-radius:999px;border:1px solid var(--line)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap brand">🛒 <span>Tekno1n.id</span> — Premium Digital Store</div>
+  </header>
+
+  <section class="hero">
+    <h1>Premium Digital • Cepat • Aman</h1>
+    <p>CapCut Pro, Canva Pro, Netflix, Spotify, ML Diamonds, dan lain-lain. Cocok buat kreator & gamers.</p>
+    <div class="cta">
+      <a href="#produk">Lihat Produk</a>
+      <a id="waTop" href="#" target="_blank">Order via WhatsApp</a>
+    </div>
+    <div style="margin-top:10px"><span class="badge">Garansi akun aktif</span> <span class="badge">Proses &lt; 5 menit*</span></div>
+  </section>
+
+  <div class="wrap">
+    <div id="produk" class="grid">
+      <div class="card">
+        <img src="https://picsum.photos/seed/capcut/600/300" alt="CapCut Pro">
+        <h3>CapCut Pro</h3>
+        <div class="price">Mulai Rp15.000/bulan</div>
+        <p class="muted">Aktivasi resmi, login akun.</p>
+        <a class="btn" id="waCapcut" href="#" target="_blank">Beli</a>
+      </div>
+      <div class="card">
+        <img src="https://picsum.photos/seed/canva/600/300" alt="Canva Pro">
+        <h3>Canva Pro (Team)</h3>
+        <div class="price">Mulai Rp10.000/bulan</div>
+        <p class="muted">Invite email ke team Pro.</p>
+        <a class="btn" id="waCanva" href="#" target="_blank">Beli</a>
+      </div>
+      <div class="card">
+        <img src="https://picsum.photos/seed/netflix/600/300" alt="Netflix">
+        <h3>Netflix Premium</h3>
+        <div class="price">Mulai Rp35.000/bulan</div>
+        <p class="muted">Profile private, HD ready.</p>
+        <a class="btn" id="waNetflix" href="#" target="_blank">Beli</a>
+      </div>
+      <div class="card">
+        <img src="https://picsum.photos/seed/spotify/600/300" alt="Spotify">
+        <h3>Spotify Premium</h3>
+        <div class="price">Mulai Rp12.000/bulan</div>
+        <p class="muted">Akun legal, bebas iklan.</p>
+        <a class="btn" id="waSpotify" href="#" target="_blank">Beli</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 tekno1n — Made with ❤️ on Termux • *Estimasi proses tergantung antrian.</footer>
+
+  <script>
+    // nomor WA disisipkan via script start (ganti di atas)
+    const WA="6281234567890";
+    const mk = (msg)=>`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+    document.getElementById('waTop').href = mk('Halo Tekno1n, saya mau order.');
+    document.getElementById('waCapcut').href = mk('Order CapCut Pro');
+    document.getElementById('waCanva').href  = mk('Order Canva Pro');
+    document.getElementById('waNetflix').href= mk('Order Netflix Premium');
+    document.getElementById('waSpotify').href= mk('Order Spotify Premium');
+    document.title = "Tekno1n.id | Premium Digital Store";
+  </script>
+</body>
+</html>
