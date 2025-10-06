@@ -7,43 +7,78 @@
 <meta name="description" content="Tekno1n.id - Premium Digital Store: CapCut Pro, Canva Pro, YouTube Premium dan layanan digital lainnya. Cepat, murah, aman.">
 <style>
 :root{
-  --bg:#0b1220;--card:#12192a;--txt:#e7eefc;--muted:#93a0b6;--line:#24314b;
-  --acc:#22c55e;--acc2:#60a5fa;--warn:#f59e0b;--danger:#ef4444
+  --bg:#070b14; --card:#0e1525; --txt:#eaf2ff; --muted:#9bb0c9; --line:#1c2943;
+  --acc:#22c55e; --acc2:#60a5fa; --warn:#f59e0b; --danger:#ef4444;
+  --dragon1:#7c3aed; --dragon2:#06b6d4; --dragon3:#22c55e;
 }
-*{box-sizing:border-box} html,body{margin:0}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;color:var(--txt);background:var(--bg)}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+  color:var(--txt); background:radial-gradient(1200px 800px at 10% -10%, #102040 0%, transparent 60%),
+                      radial-gradient(900px 600px at 110% 20%, #112b3f 0%, transparent 60%),
+                      var(--bg);
+}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1100px;margin:auto;padding:16px}
-header{position:sticky;top:0;background:rgba(11,18,32,.8);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:20}
+header{
+  position:sticky;top:0;z-index:20;
+  background:linear-gradient(90deg, #0a1122cc, #0a1122cc);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+}
 .brand{display:flex;align-items:center;gap:10px;font-weight:900}
-.brand span{color:var(--acc2)}
+.brand .dragon{
+  background:linear-gradient(90deg,var(--dragon1),var(--dragon2),var(--dragon3));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
 .hero{padding:34px 16px 16px;text-align:center}
 .hero h1{margin:0 0 8px;font-size:clamp(1.6rem,3.6vw,2.4rem)}
 .hero p{margin:0;color:var(--muted)}
 .tools{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-.input,select,textarea{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:12px;padding:10px 12px;outline:none}
-.btn{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--acc);color:#04110a;font-weight:800;border:1px solid #1a6f3b}
-.btn.secondary{background:#1f2a44;color:#c8d6ff;border-color:var(--line)}
-.btn.danger{background:var(--danger);color:#fff;border-color:#b91c1c}
+.input,select,textarea{
+  background:var(--card); border:1px solid var(--line); color:var(--txt);
+  border-radius:12px; padding:10px 12px; outline:none
+}
+.btn{
+  display:inline-flex; gap:8px; align-items:center; padding:10px 14px;
+  border-radius:12px; color:#05120a; font-weight:800; border:1px solid #185a32;
+  background:linear-gradient(135deg,#34d399,#22c55e);
+  transition:transform .08s ease, filter .15s ease;
+}
+.btn.secondary{
+  background:linear-gradient(135deg,#203052,#17233e); color:#cfe0ff; border-color:var(--line)
+}
+.btn.danger{background:linear-gradient(135deg,#ef4444,#dc2626); color:#fff; border-color:#b91c1c}
+.btn:active{transform:translateY(1px)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column}
+.card{
+  background:linear-gradient(180deg,#0f182b 0%, #0c1424 100%);
+  border:1px solid var(--line); border-radius:16px; padding:14px; display:flex; flex-direction:column;
+  box-shadow:0 6px 30px rgba(0,0,0,.25);
+}
 .card img{width:100%;height:150px;object-fit:cover;border-radius:12px;border:1px solid var(--line);background:#0d1524}
 .card h3{margin:10px 0 6px}
-.badge{display:inline-block;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:#1b2440;color:#cfe0ff;font-size:.75rem}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:#172342;color:#cfe0ff;font-size:.75rem}
 .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .price{color:var(--acc2);font-weight:800}
 .muted{color:var(--muted);font-size:.9rem}
+
 .section{padding:10px 16px 24px}
 .section h2{margin:8px 0 8px;font-size:1.2rem}
+
 .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0}
 .faq summary{cursor:pointer;font-weight:700}
 .testi{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
 .tcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
 .tname{font-weight:700}
 .tstars{color:#ffd166}
+
 footer{border-top:1px solid var(--line);color:var(--muted);text-align:center;padding:18px}
-.wa-float{position:fixed;right:16px;bottom:16px;background:#25D366;color:#04250f;border-radius:999px;
-  padding:12px 16px;font-weight:800;border:2px solid #158b46;box-shadow:0 8px 30px #0007;z-index:50}
+.wa-float{
+  position:fixed;right:16px;bottom:16px;border-radius:999px;padding:12px 16px;font-weight:800;
+  border:2px solid #158b46;box-shadow:0 8px 30px #0007;z-index:50;color:#04250f;
+  background:linear-gradient(135deg,#34d399,#10b981);
+}
 .pill{padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#152038}
 .flex{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center}
 .hidden{display:none}
@@ -57,7 +92,7 @@ small.code{font-family:ui-monospace,Consolas,monospace;color:#9dd2ff}
 <body>
 
 <header>
-  <div class="wrap brand">🛒 <span>Tekno1n.id</span> — Premium Digital Store <span id="adminBadge" class="pill hidden">ADMIN</span></div>
+  <div class="wrap brand">🐉 <span class="dragon">Tekno1n.id</span> — Premium Digital Store <span id="adminBadge" class="pill hidden">ADMIN</span></div>
 </header>
 
 <section class="hero">
@@ -150,78 +185,62 @@ small.code{font-family:ui-monospace,Consolas,monospace;color:#9dd2ff}
 <a id="waFloat" class="wa-float" href="#" target="_blank">Chat Admin</a>
 
 <script>
-/* =======================
-   KONFIG TOKO
-   ======================= */
-const WA_NUMBER = "62895428270020"; // ← nomor WA admin (format internasional TANPA +)
-const ADMIN_PASS = "admin"; // ← ganti passcode admin di sini
-const ALLOWED_ADMIN_EMAIL = "csmgru05@gmail.com"; // ← kalau nanti pakai Google Sign-In
+const WA_NUMBER = "62895428270020";
+const ADMIN_PASS = "admin";
 document.title = "Tekno1n.id | Premium Digital Store";
 
-/* =======================
-   STORAGE & DATA AWAL
-   ======================= */
 const LS_KEY = "tekno1n_store_v1";
-if (new URLSearchParams(location.search).get("reset")==="1"){localStorage.removeItem("tekno1n_store_v1");}
-
-if(!DB||!Array.isArray(DB.products)||DB.products.length===0){DB=JSON.parse(JSON.stringify(defaultData));save(DB);}
 const defaultData = {
   products: [
-    { id: id(), name:"CapCut Pro Private", cat:"Editor", price:13500, unit:"/bulan", img:"https://picsum.photos/seed/capcut/600/300", desc:"Full Garansi - akses private", popular:95 },
-    { id: id(), name:"Canva Pro", cat:"Desain", price:2000, unit:"/bulan", img:"https://picsum.photos/seed/canva/600/300", desc:"Invite email ke tim Pro", popular:90 },
-    { id: id(), name:"YouTube Premium (Family)", cat:"Hiburan", price:3000, unit:"/bulan", img:"https://picsum.photos/seed/youtube/600/300", desc:"Join family plan, no ads", popular:85 }
+    { id: uid(), name:"CapCut Pro Private", cat:"Editor",  price:13500, unit:"/bulan", img:"https://picsum.photos/seed/capcut/600/300",   desc:"Full Garansi - akses private", popular:95 },
+    { id: uid(), name:"Canva Pro",          cat:"Desain",  price:2000,  unit:"/bulan", img:"https://picsum.photos/seed/canva/600/300",    desc:"Invite email ke tim Pro",     popular:90 },
+    { id: uid(), name:"YouTube Premium (Family)", cat:"Hiburan", price:3000, unit:"/bulan", img:"https://picsum.photos/seed/youtube/600/300", desc:"Join family plan, no ads", popular:85 }
   ],
   testi: [
-    { id:id(), name:"Rafi", stars:5, text:"Order CapCut 3 menit kelar. Mantap!" },
-    { id:id(), name:"Sinta", stars:5, text:"Canva Pro langsung masuk. Fast respon." },
-    { id:id(), name:"Dio", stars:4, text:"YouTube Premium lancar jaya." }
+    { id: uid(), name:"Rafi",  stars:5, text:"Order CapCut 3 menit kelar. Mantap!" },
+    { id: uid(), name:"Sinta", stars:5, text:"Canva Pro langsung masuk. Fast respon." },
+    { id: uid(), name:"Dio",   stars:4, text:"YouTube Premium lancar jaya." }
   ]
 };
-function id(){ return Math.random().toString(36).slice(2,10); }
-function load(){ try{ return JSON.parse(localStorage.getItem(LS_KEY)) || defaultData }catch{ return defaultData } }
-function save(data){ localStorage.setItem(LS_KEY, JSON.stringify(data)); }
+function uid(){ return Math.random().toString(36).slice(2,10); }
+function loadDB(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(!raw) return JSON.parse(JSON.stringify(defaultData));
+    const parsed = JSON.parse(raw);
+    if(!parsed.products || !Array.isArray(parsed.products) || parsed.products.length===0){
+      return JSON.parse(JSON.stringify(defaultData));
+    }
+    return parsed;
+  }catch(e){ return JSON.parse(JSON.stringify(defaultData)); }
+}
+function saveDB(){ localStorage.setItem(LS_KEY, JSON.stringify(DB)); }
 
-let DB = load();
-let ADMIN = false;
+let DB = loadDB();
+if (new URLSearchParams(location.search).get("reset")==="1"){
+  DB = JSON.parse(JSON.stringify(defaultData)); saveDB();
+}
 
-/* =======================
-   DOM
-   ======================= */
-const yearEl = document.getElementById("year"); yearEl.textContent = new Date().getFullYear();
-const qEl = document.getElementById("q");
-const sortEl = document.getElementById("sort");
-const grid = document.getElementById("grid");
-const testiWrap = document.getElementById("testi");
-const waFloat = document.getElementById("waFloat");
-const adminBar = document.getElementById("adminBar");
-const adminBadge = document.getElementById("adminBadge");
-const loginBtn = document.getElementById("loginBtn");
-const logoutBtn = document.getElementById("logoutBtn");
+const qs = s=>document.querySelector(s);
+const yearEl = qs("#year"); yearEl.textContent = new Date().getFullYear();
+const qEl = qs("#q"); const sortEl = qs("#sort"); const grid = qs("#grid");
+const testiWrap = qs("#testi"); const waFloat = qs("#waFloat");
+const adminBar = qs("#adminBar"); const adminBadge = qs("#adminBadge");
+const loginBtn = qs("#loginBtn"); const logoutBtn = qs("#logoutBtn");
 
-const pName = document.getElementById("pName");
-const pPrice = document.getElementById("pPrice");
-const pUnit = document.getElementById("pUnit");
-const pCat = document.getElementById("pCat");
-const pImg = document.getElementById("pImg");
-const pPopular = document.getElementById("pPopular");
-const pDesc = document.getElementById("pDesc");
-const prodForm = document.getElementById("prodForm");
-const prodTableBody = document.querySelector("#prodTable tbody");
-const clearFormBtn = document.getElementById("clearForm");
+const pName = qs("#pName"); const pPrice = qs("#pPrice"); const pUnit = qs("#pUnit");
+const pCat = qs("#pCat"); const pImg = qs("#pImg"); const pPopular = qs("#pPopular");
+const pDesc = qs("#pDesc"); const prodForm = qs("#prodForm"); const prodTableBody = qs("#prodTable tbody");
+const clearFormBtn = qs("#clearForm");
 
-const testiForm = document.getElementById("testiForm");
-const tName = document.getElementById("tName");
-const tStars = document.getElementById("tStars");
-const tText = document.getElementById("tText");
-const testiTableBody = document.querySelector("#testiTable tbody");
+const testiForm = qs("#testiForm"); const tName = qs("#tName"); const tStars = qs("#tStars");
+const tText = qs("#tText"); const testiTableBody = qs("#testiTable tbody");
 
-document.getElementById('resetBtn').addEventListener('click', ()=>{ qEl.value=""; sortEl.value="popular"; renderProducts(); });
+qs('#resetBtn').addEventListener('click', ()=>{ qEl.value=""; sortEl.value="popular"; renderProducts(); });
 waFloat.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Halo Tekno1n, saya mau tanya ketersediaan & price list.")}`;
 
-/* =======================
-   RENDER
-   ======================= */
 const fmtIDR = n => "Rp" + (n||0).toLocaleString("id-ID");
+
 function renderProducts(){
   let list = DB.products.slice();
   const q = (qEl.value||"").trim().toLowerCase();
@@ -255,8 +274,13 @@ function renderProducts(){
 function renderTesti(){
   testiWrap.innerHTML = DB.testi.map(t=>{
     const stars = "★".repeat(t.stars) + "☆".repeat(5-t.stars);
-    return `<div class="tcard"><div class="row"><div class="tname">${t.name}</div><div class="tstars">${stars}</div></div><div class="muted">${t.text}</div>
-      ${ADMIN? `<div style="margin-top:8px" class="flex"><button class="btn secondary" onclick="editTesti('${t.id}')">Edit</button><button class="btn danger" onclick="delTesti('${t.id}')">Hapus</button></div>`:''}
+    return `<div class="tcard">
+      <div class="row"><div class="tname">${t.name}</div><div class="tstars">${stars}</div></div>
+      <div class="muted">${t.text}</div>
+      ${ADMIN? `<div style="margin-top:8px" class="flex">
+        <button class="btn secondary" onclick="editTesti('${t.id}')">Edit</button>
+        <button class="btn danger" onclick="delTesti('${t.id}')">Hapus</button>
+      </div>`:''}
     </div>`;
   }).join('');
 }
@@ -267,7 +291,7 @@ function renderProdTable(){
       <td>${fmtIDR(p.price)}</td>
       <td>${p.unit||""}</td>
       <td>${p.cat||""}</td>
-      <td><a href="${p.img}" target="_blank">Lihat</a></td>
+      <td>${p.img?`<a href="${p.img}" target="_blank">Lihat</a>`:'-'}</td>
       <td>${p.popular||0}</td>
       <td>
         <button class="btn secondary" onclick="editProd('${p.id}')">Edit</button>
@@ -292,9 +316,7 @@ function waLink(productName){
   return `https://wa.me/${WA_NUMBER}?text=${text}`;
 }
 
-/* =======================
-   ADMIN MODE
-   ======================= */
+let ADMIN = false;
 function setAdmin(on){
   ADMIN = !!on;
   adminBar.classList.toggle("hidden", !ADMIN);
@@ -303,54 +325,42 @@ function setAdmin(on){
   logoutBtn.classList.toggle("hidden", !ADMIN);
   renderProducts(); renderProdTable(); renderTesti(); renderTestiTable();
 }
-
-loginBtn.onclick = () => {
+loginBtn.onclick = ()=>{
   const pass = prompt("Masukkan passcode admin:");
-<<<<<<< HEAD
-  if (pass === ADMIN_PASS) {
-=======
-  if (pass if (pass if (pass if (pass === "admin")if (pass === "admin") pass.trim() === ADMIN_PASS)if (pass if (pass === "admin")if (pass === "admin") pass.trim() === ADMIN_PASS) pass.trim() === ADMIN_PASS)if (pass if (pass if (pass === "admin")if (pass === "admin") pass.trim() === ADMIN_PASS)if (pass if (pass === "admin")if (pass === "admin") pass.trim() === ADMIN_PASS) pass.trim() === ADMIN_PASS) pass.trim() === ADMIN_PASS) {
->>>>>>> 4975b36 (fix: admin pass & check)
+  if (pass && pass.trim() === ADMIN_PASS) {
     setAdmin(true);
-    sessionStorage.setItem("isAdmin", "1"); // biar tetap admin pas reload
+    sessionStorage.setItem("isAdmin","1");
   } else {
     alert("Passcode salah.");
   }
 };
-
-logoutBtn.onclick = () => {
+logoutBtn.onclick = ()=>{
   setAdmin(false);
   sessionStorage.removeItem("isAdmin");
 };
-
-// auto-login kalau sebelumnya masih admin
-window.addEventListener("load", () => {
-  if (sessionStorage.getItem("isAdmin") === "1") setAdmin(true);
+window.addEventListener("load", ()=>{
+  if (sessionStorage.getItem("isAdmin")==="1") setAdmin(true);
 });
-/* =======================
-   CRUD PRODUK
-   ======================= */
+
 let editingId = null;
-prodForm.addEventListener("submit", (e)=>{
+prodForm.addEventListener("submit",(e)=>{
   e.preventDefault();
   const data = {
-    name:pName.value.trim(), price: +pPrice.value, unit:pUnit.value.trim(),
+    name:pName.value.trim(), price:+pPrice.value, unit:pUnit.value.trim(),
     cat:pCat.value.trim(), img:pImg.value.trim(), desc:pDesc.value.trim(),
     popular: Math.max(0, Math.min(100, +pPopular.value||0))
   };
   if(!data.name || Number.isNaN(data.price)) return alert("Nama & Harga wajib diisi.");
-
   if(editingId){
-    const idx = DB.products.findIndex(p=>p.id===editingId);
-    if(idx>-1) DB.products[idx] = {...DB.products[idx], ...data};
+    const i = DB.products.findIndex(p=>p.id===editingId);
+    if(i>-1) DB.products[i] = {...DB.products[i], ...data};
   }else{
-    DB.products.push({id:id(), ...data});
+    DB.products.push({id:uid(), ...data});
   }
-  save(DB);
-  editingId=null; prodForm.reset(); pPopular.value=80;
+  saveDB(); editingId=null; prodForm.reset(); pPopular.value=80;
   renderProducts(); renderProdTable();
 });
-document.getElementById("clearForm").onclick = ()=>{ editingId=null; prodForm.reset(); pPopular.value=80; };
+clearFormBtn.onclick = ()=>{ editingId=null; prodForm.reset(); pPopular.value=80; };
 
 window.editProd = (pid)=>{
   const p = DB.products.find(x=>x.id===pid); if(!p) return;
@@ -362,12 +372,9 @@ window.editProd = (pid)=>{
 window.delProd = (pid)=>{
   if(!confirm("Hapus produk ini?")) return;
   DB.products = DB.products.filter(x=>x.id!==pid);
-  save(DB); renderProducts(); renderProdTable();
+  saveDB(); renderProducts(); renderProdTable();
 };
 
-/* =======================
-   CRUD TESTI
-   ======================= */
 let editingTestiId = null;
 testiForm.addEventListener("submit",(e)=>{
   e.preventDefault();
@@ -377,57 +384,26 @@ testiForm.addEventListener("submit",(e)=>{
     const i = DB.testi.findIndex(x=>x.id===editingTestiId);
     if(i>-1) DB.testi[i] = {...DB.testi[i], ...t};
   }else{
-    DB.testi.push({id:id(), ...t});
+    DB.testi.push({id:uid(), ...t});
   }
-  save(DB); editingTestiId=null; testiForm.reset();
+  saveDB(); editingTestiId=null; testiForm.reset();
   renderTesti(); renderTestiTable();
 });
 window.editTesti = (tid)=>{
   const t = DB.testi.find(x=>x.id===tid); if(!t) return;
   editingTestiId = t.id; tName.value=t.name; tStars.value=t.stars; tText.value=t.text;
-  window.scrollTo({top:document.getElementById('testi').offsetTop-80,behavior:"smooth"});
+  window.scrollTo({top:document.querySelector('#testi').offsetTop-80,behavior:"smooth"});
 };
 window.delTesti = (tid)=>{
   if(!confirm("Hapus testimoni ini?")) return;
   DB.testi = DB.testi.filter(x=>x.id!==tid);
-  save(DB); renderTesti(); renderTestiTable();
+  saveDB(); renderTesti(); renderTestiTable();
 };
 
-/* =======================
-   EXPORT / IMPORT
-   ======================= */
-document.getElementById("exportBtn").onclick = ()=>{
-  const blob = new Blob([JSON.stringify(DB,null,2)], {type:"application/json"});
-  const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
-  a.download = "tekno1n-store.json"; a.click();
-};
-document.getElementById("importFile").addEventListener("change", (ev)=>{
-  const f = ev.target.files[0]; if(!f) return;
-  const r = new FileReader();
-  r.onload = ()=>{ try{ DB = JSON.parse(r.result); save(DB); renderAll(); alert("Import sukses!") }catch{ alert("Import gagal: JSON tidak valid") } };
-  r.readAsText(f);
-});
-
-/* =======================
-   SEARCH + SORT
-   ======================= */
 qEl.addEventListener('input', renderProducts);
 sortEl.addEventListener('change', renderProducts);
 
-/* =======================
-   OPSIONAL: GOOGLE SIGN-IN
-   (Butuh client_id. Aktifkan jika sudah punya)
-   - Batasi admin by email: ALLOWED_ADMIN_EMAIL
-   ======================= */
-// const CLIENT_ID = "ISI_CLIENT_ID_GOOGLE_KAMU.apps.googleusercontent.com";
-// (function addGoogle(){const s=document.createElement('script');s.src="https://accounts.google.com/gsi/client";s.async=true;s.defer=true;document.head.appendChild(s);}());
-// function onGoogleCredential(resp){ try{ const payload = JSON.parse(atob(resp.credential.split('.')[1])); if(payload.email===ALLOWED_ADMIN_EMAIL){ setAdmin(true); } else alert("Email tidak diizinkan."); }catch(e){ alert("Login gagal"); } }
-// // Tambahkan tombol di UI kalau mau:
-// // <div id="g_id_onload" data-client_id="...CLIENT_ID..." data-callback="onGoogleCredential"></div>
-// // <div class="g_id_signin" data-type="standard"></div>
-
-function renderAll(){ renderProducts(); renderTesti(); renderProdTable(); renderTestiTable(); }
-renderAll();
+renderProducts(); renderTesti(); renderProdTable(); renderTestiTable();
 </script>
 </body>
 </html>
