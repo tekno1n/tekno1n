@@ -300,9 +300,10 @@ function setAdmin(on){
   logoutBtn.classList.toggle("hidden", !ADMIN);
   renderProducts(); renderProdTable(); renderTesti(); renderTestiTable();
 }
+
 loginBtn.onclick = () => {
   const pass = prompt("Masukkan passcode admin:");
-  if (pass === "admin") {
+  if (pass === ADMIN_PASS) {
     setAdmin(true);
     sessionStorage.setItem("isAdmin", "1"); // biar tetap admin pas reload
   } else {
@@ -319,7 +320,6 @@ logoutBtn.onclick = () => {
 window.addEventListener("load", () => {
   if (sessionStorage.getItem("isAdmin") === "1") setAdmin(true);
 });
-};
 /* =======================
    CRUD PRODUK
    ======================= */
