@@ -300,13 +300,26 @@ function setAdmin(on){
   logoutBtn.classList.toggle("hidden", !ADMIN);
   renderProducts(); renderProdTable(); renderTesti(); renderTestiTable();
 }
-loginBtn.onclick = ()=>{
+loginBtn.onclick = () => {
   const pass = prompt("Masukkan passcode admin:");
-  if(pass === admin){ setAdmin(true); }
-  else alert("Passcode salah.");
+  if (pass === "admin") {
+    setAdmin(true);
+    sessionStorage.setItem("isAdmin", "1"); // biar tetap admin pas reload
+  } else {
+    alert("Passcode salah.");
+  }
 };
-logoutBtn.onclick = ()=> setAdmin(false);
 
+logoutBtn.onclick = () => {
+  setAdmin(false);
+  sessionStorage.removeItem("isAdmin");
+};
+
+// auto-login kalau sebelumnya masih admin
+window.addEventListener("load", () => {
+  if (sessionStorage.getItem("isAdmin") === "1") setAdmin(true);
+});
+};
 /* =======================
    CRUD PRODUK
    ======================= */
