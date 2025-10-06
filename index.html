@@ -154,7 +154,7 @@ small.code{font-family:ui-monospace,Consolas,monospace;color:#9dd2ff}
    KONFIG TOKO
    ======================= */
 const WA_NUMBER = "62895428270020"; // ← nomor WA admin (format internasional TANPA +)
-const ADMIN_PASS = "tekno1n-admin"; // ← ganti passcode admin di sini
+const ADMIN_PASS = "admin"; // ← ganti passcode admin di sini
 const ALLOWED_ADMIN_EMAIL = "csmgru05@gmail.com"; // ← kalau nanti pakai Google Sign-In
 document.title = "Tekno1n.id | Premium Digital Store";
 
@@ -162,6 +162,9 @@ document.title = "Tekno1n.id | Premium Digital Store";
    STORAGE & DATA AWAL
    ======================= */
 const LS_KEY = "tekno1n_store_v1";
+if (new URLSearchParams(location.search).get("reset")==="1"){localStorage.removeItem("tekno1n_store_v1");}
+
+if(!DB||!Array.isArray(DB.products)||DB.products.length===0){DB=JSON.parse(JSON.stringify(defaultData));save(DB);}
 const defaultData = {
   products: [
     { id: id(), name:"CapCut Pro Private", cat:"Editor", price:13500, unit:"/bulan", img:"https://picsum.photos/seed/capcut/600/300", desc:"Full Garansi - akses private", popular:95 },
@@ -303,7 +306,11 @@ function setAdmin(on){
 
 loginBtn.onclick = () => {
   const pass = prompt("Masukkan passcode admin:");
+<<<<<<< HEAD
   if (pass === ADMIN_PASS) {
+=======
+  if (pass if (pass if (pass === "admin")if (pass === "admin") pass.trim() === ADMIN_PASS)if (pass if (pass === "admin")if (pass === "admin") pass.trim() === ADMIN_PASS) pass.trim() === ADMIN_PASS) {
+>>>>>>> 4975b36 (fix: admin pass & check)
     setAdmin(true);
     sessionStorage.setItem("isAdmin", "1"); // biar tetap admin pas reload
   } else {
